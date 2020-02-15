@@ -10,6 +10,7 @@ public class Steps {
     AuthorizationPage authorizationPage = new AuthorizationPage();
     ProfilePage profilePage = new ProfilePage();
 
+
     public void openMainPage(){
         mainPage.open();
     }

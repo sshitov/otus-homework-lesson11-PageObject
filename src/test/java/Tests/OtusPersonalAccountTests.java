@@ -7,7 +7,7 @@ import org.hamcrest.core.StringContains;
 import org.junit.*;
 import org.junit.rules.ErrorCollector;
 
-public class otusPersonalAccountTests {
+public class OtusPersonalAccountTests {
 
     ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
     Steps steps = new Steps();
