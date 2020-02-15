@@ -37,6 +37,7 @@ public class OtusPersonalAccountTests {
     @Test
     public void fillAllFieldInProfileAboutYourself() {
 
+        // Change data on the profile page
         steps.openMainPage();
         steps.openAuthorizationForm();
         steps.fillTheAuthorizationForm(userLogin, userPassword);
@@ -65,10 +66,12 @@ public class OtusPersonalAccountTests {
                 .enterCompany("OtusHomeWork")
                 .enterPosition("Student")
                 .saveChangesOnTheProfilePage();
-    }
 
-    @Test
-    public void verifyThatChangesInProfileIsSaved() {
+        // Close the browser and the open profile page in a clean browser
+        ChromeWebDriver.getDriver().quit();
+        chromeWebDriver.create();
+
+        // Verifying that all change in the fields is saved
         steps.openMainPage();
         steps.openAuthorizationForm();
         steps.fillTheAuthorizationForm(userLogin, userPassword);
