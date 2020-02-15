@@ -75,23 +75,40 @@ public class OtusPersonalAccountTests {
         steps.submitAuthorizationForm();
         steps.openProfilePage();
 
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getLocalFirstName()), new StringContains("Сергей"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getLatinFirstName()), new StringContains("Sergeiy"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getLocalSecondName()), new StringContains("Шитов"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getLatinSecondName()), new StringContains("Shitov"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getBlogName()), new StringContains("ssergeiy"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getDateOfBirth()), new StringContains("16.08.1991"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getCountry()), new StringContains("Россия"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getCity()), new StringContains("Москва"));
-        errorCollector.checkThat(profilePage.getValueCheckField(profilePage.getRemoteWork()), new StringContains("true"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getFirstCommunicationTypeSelector()), new StringContains("skype"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getEnterValueForFirstCommunicationType()), new StringContains("sashitov"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getSecondCommunicationTypeSelector()), new StringContains("vk"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getEnterValueForSecondCommunicationType()), new StringContains("https://vk.com/feed"));
-        errorCollector.checkThat(profilePage.getValueCheckField(profilePage.getPreferredSecondCommunicationType()), new StringContains("true"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getGender()), new StringContains("m"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getCompany()), new StringContains("OtusHomeWork"));
-        errorCollector.checkThat(profilePage.getValueTextField(profilePage.getPosition()), new StringContains("Student"));
+        errorCollector.checkThat("Имя не соответствует ожидаемому",
+                profilePage.getValueTextField(profilePage.getLocalFirstName()), new StringContains("Сергей"));
+        errorCollector.checkThat("Имя на латинице не соответствует ожидаемому",
+                profilePage.getValueTextField(profilePage.getLatinFirstName()), new StringContains("Sergeiy"));
+        errorCollector.checkThat("Фамилия не соответствует ожидаемой",
+                profilePage.getValueTextField(profilePage.getLocalSecondName()), new StringContains("Шитов"));
+        errorCollector.checkThat("Фамилия на латинице не соответствует ожидаемой",
+                profilePage.getValueTextField(profilePage.getLatinSecondName()), new StringContains("Shitov"));
+        errorCollector.checkThat("Имя в блоге не соответствует ожидаемому",
+                profilePage.getValueTextField(profilePage.getBlogName()), new StringContains("ssergeiy"));
+        errorCollector.checkThat("Дата рождения не соответствует ожидаемой",
+                profilePage.getValueTextField(profilePage.getDateOfBirth()), new StringContains("16.08.1991"));
+        errorCollector.checkThat("Страна не соответствует ожидаемой",
+                profilePage.getValueTextField(profilePage.getCountry()), new StringContains("Россия"));
+        errorCollector.checkThat("Город не соответствует ожидаемому",
+                profilePage.getValueTextField(profilePage.getCity()), new StringContains("Москва"));
+        errorCollector.checkThat("Значение \"Удаленная работа\" не проставлено",
+                profilePage.getValueCheckField(profilePage.getRemoteWork()), new StringContains("true"));
+        errorCollector.checkThat("Первый вид связи не skype",
+                profilePage.getValueTextField(profilePage.getFirstCommunicationTypeSelector()), new StringContains("skype"));
+        errorCollector.checkThat("Значение в поле для вида связи skype - не соответсвует ожидаемому",
+                profilePage.getValueTextField(profilePage.getEnterValueForFirstCommunicationType()), new StringContains("sashitov"));
+        errorCollector.checkThat("Второй вид связи не vk",
+                profilePage.getValueTextField(profilePage.getSecondCommunicationTypeSelector()), new StringContains("vk"));
+        errorCollector.checkThat("Значение в поле для вида связи vk - не соответсвует ожидаемому",
+                profilePage.getValueTextField(profilePage.getEnterValueForSecondCommunicationType()), new StringContains("https://vk.com/feed"));
+        errorCollector.checkThat("Значение \"Предпочтительный вид связи\" не проставлено",
+                profilePage.getValueCheckField(profilePage.getPreferredSecondCommunicationType()), new StringContains("true"));
+        errorCollector.checkThat("Пол не соответствует ожидаемому",
+                profilePage.getValueTextField(profilePage.getGender()), new StringContains("m"));
+        errorCollector.checkThat("Компания не соответствует ожидаемой",
+                profilePage.getValueTextField(profilePage.getCompany()), new StringContains("OtusHomeWork"));
+        errorCollector.checkThat("Должность не соответствует ожидаемой",
+                profilePage.getValueTextField(profilePage.getPosition()), new StringContains("Student"));
 
     }
 
