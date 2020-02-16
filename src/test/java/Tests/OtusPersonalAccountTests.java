@@ -35,7 +35,7 @@ public class OtusPersonalAccountTests {
     }
 
     @Test
-    public void fillAllFieldInProfileAboutYourself() {
+    public void updateAllPersonalInformation() {
 
         // Change data on the profile page
         steps.openMainPage();

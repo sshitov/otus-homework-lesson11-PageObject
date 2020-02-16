@@ -4,10 +4,8 @@ import Helpers.DriverManagers.ChromeWebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AuthorizationPage {
-    ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
 
     public AuthorizationPage(){
         PageFactory.initElements(ChromeWebDriver.getDriver(),this);
@@ -21,9 +19,6 @@ public class AuthorizationPage {
 
     @FindBy (css = "form[class*=login] [type='submit']")
     protected WebElement submitButton;
-
-    @FindBy (css = ".header2__right p")
-    protected WebElement userName;
 
     public WebElement getEmail() {
         return email;
@@ -49,6 +44,5 @@ public class AuthorizationPage {
 
     public void authorize() {
         getSubmitButton().click();
-        chromeWebDriver.getWait().until(ExpectedConditions.visibilityOf(userName));
     }
 }

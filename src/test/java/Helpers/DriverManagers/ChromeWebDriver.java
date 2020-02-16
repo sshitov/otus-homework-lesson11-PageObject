@@ -24,6 +24,8 @@ public class ChromeWebDriver {
         return driver;
     }
 
+    public static Actions getAction() { return action; }
+
     public WebDriverWait getWait() {
         return wait;
     }

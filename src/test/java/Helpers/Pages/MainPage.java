@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage {
+
     ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
 
     protected String baseUrl = "https://otus.ru/";
@@ -18,8 +19,8 @@ public class MainPage {
     @FindBy (css = "[class*='auth'] button")
     protected WebElement loginButton;
 
-    @FindBy (css = "form[class*=login] [name='email']")
-    protected WebElement emailField;
+    @FindBy (css = ".header2__right p")
+    protected WebElement userName;
 
     @FindBy (css = ".header2-menu__dropdown-text_name")
     protected WebElement myProfile;
@@ -27,6 +28,8 @@ public class MainPage {
     public WebElement getLoginButton() {
         return loginButton;
     }
+
+    public WebElement getUserName() { return userName; }
 
     public WebElement getMyProfile() {
         return myProfile;
@@ -38,10 +41,11 @@ public class MainPage {
 
     public void openAuthorizationPage() {
         getLoginButton().click();
-        chromeWebDriver.getWait().until(ExpectedConditions.visibilityOf(emailField));
     }
 
     public void openProfilePage() {
+        chromeWebDriver.getWait().until(ExpectedConditions.visibilityOf(getUserName()));
+        ChromeWebDriver.getAction().moveToElement(getUserName()).perform();
         getMyProfile().click();
     }
 }
