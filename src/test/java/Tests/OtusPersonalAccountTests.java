@@ -95,12 +95,12 @@ public class OtusPersonalAccountTests {
                 profilePage.getValueTextField(profilePage.getCity()), new StringContains("Москва"));
         errorCollector.checkThat("Значение \"Удаленная работа\" не проставлено",
                 profilePage.getValueCheckField(profilePage.getRemoteWork()), new StringContains("true"));
-        errorCollector.checkThat("Первый вид связи не skype",
-                profilePage.getValueTextField(profilePage.getFirstCommunicationTypeSelector()), new StringContains("skype"));
+        errorCollector.checkThat("Первый вид связи не facebook",
+                profilePage.getValueTextField(profilePage.getFirstCommunicationTypeSelector()), new StringContains("facebook"));
         errorCollector.checkThat("Значение в поле для вида связи skype - не соответсвует ожидаемому",
                 profilePage.getValueTextField(profilePage.getEnterValueForFirstCommunicationType()), new StringContains("sashitov"));
-        errorCollector.checkThat("Второй вид связи не vk",
-                profilePage.getValueTextField(profilePage.getSecondCommunicationTypeSelector()), new StringContains("vk"));
+        errorCollector.checkThat("Второй вид связи не telegram",
+                profilePage.getValueTextField(profilePage.getSecondCommunicationTypeSelector()), new StringContains("telegram"));
         errorCollector.checkThat("Значение в поле для вида связи vk - не соответсвует ожидаемому",
                 profilePage.getValueTextField(profilePage.getEnterValueForSecondCommunicationType()), new StringContains("https://vk.com/feed"));
         errorCollector.checkThat("Значение \"Предпочтительный вид связи\" не проставлено",
