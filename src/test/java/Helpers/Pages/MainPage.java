@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage {
 
-    ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
-
     protected String baseUrl = "https://otus.ru/";
 
     public MainPage(){
@@ -44,7 +42,7 @@ public class MainPage {
     }
 
     public void openProfilePage() {
-        chromeWebDriver.getWait().until(ExpectedConditions.visibilityOf(getUserName()));
+        ChromeWebDriver.getWait().until(ExpectedConditions.visibilityOf(getUserName()));
         ChromeWebDriver.getAction().moveToElement(getUserName()).perform();
         getMyProfile().click();
     }

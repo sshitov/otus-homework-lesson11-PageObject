@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProfilePage {
 
-    ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
-
     public ProfilePage(){
         PageFactory.initElements(ChromeWebDriver.getDriver(), this);
     }
@@ -51,8 +49,8 @@ public class ProfilePage {
     @FindBy(css = "[name='contact-0-service']")
     protected WebElement firstCommunicationTypeSelector;
 
-    @FindBy(css = "[title='Skype']")
-    protected WebElement skypeCommunicationType;
+    @FindBy(css = "[title='Facebook']")
+    protected WebElement facebookCommunicationType;
 
     @FindBy(css = "[name='contact-0-value']")
     protected WebElement enterValueForFirstCommunicationType;
@@ -63,8 +61,8 @@ public class ProfilePage {
     @FindBy(css = "[name='contact-1-service']")
     protected WebElement secondCommunicationTypeSelector;
 
-    @FindBy(css = ":nth-child(3) > .container__col_ssm-12 button[title='VK']")
-    protected WebElement vkCommunicationType;
+    @FindBy(css = ":nth-child(3) > .container__col_ssm-12 button[title='Тelegram']")
+    protected WebElement telegramCommunicationType;
 
     @FindBy(css = "[name='contact-1-value']")
     protected WebElement enterValueForSecondCommunicationType;
@@ -134,8 +132,8 @@ public class ProfilePage {
         return firstCommunicationTypeSelector;
     }
 
-    public WebElement getSkypeCommunicationType() {
-        return skypeCommunicationType;
+    public WebElement getFacebookCommunicationType() {
+        return facebookCommunicationType;
     }
 
     public WebElement getEnterValueForFirstCommunicationType() {
@@ -150,8 +148,8 @@ public class ProfilePage {
         return secondCommunicationTypeSelector;
     }
 
-    public WebElement getVkCommunicationType() {
-        return vkCommunicationType;
+    public WebElement getTelegramCommunicationType() {
+        return telegramCommunicationType;
     }
 
     public WebElement getEnterValueForSecondCommunicationType() {
@@ -241,8 +239,8 @@ public class ProfilePage {
         return this;
     }
 
-    public ProfilePage selectCommunicationTypeSkype() {
-        getSkypeCommunicationType().click();
+    public ProfilePage selectCommunicationTypeFacebook() {
+        getFacebookCommunicationType().click();
         return this;
     }
 
@@ -263,8 +261,8 @@ public class ProfilePage {
         return this;
     }
 
-    public ProfilePage selectCommunicationTypeVK() {
-        getVkCommunicationType().click();
+    public ProfilePage selectCommunicationTypeTelegram() {
+        getTelegramCommunicationType().click();
         return this;
     }
 
@@ -300,7 +298,7 @@ public class ProfilePage {
 
     public void saveChangesOnTheProfilePage() {
         getSaveChanges().click();
-        chromeWebDriver.getWait().until(ExpectedConditions.invisibilityOf(getSaveChanges()));
+        ChromeWebDriver.getWait().until(ExpectedConditions.invisibilityOf(getSaveChanges()));
 
     }
 

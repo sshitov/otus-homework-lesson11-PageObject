@@ -17,7 +17,7 @@ public class ChromeWebDriver {
     public static final Logger logger = LogManager.getLogger(Steps.class.getName());
 
     protected static WebDriver driver;
-    protected WebDriverWait wait;
+    protected static WebDriverWait wait;
     protected static Actions action;
 
     public static WebDriver getDriver() {
@@ -26,7 +26,7 @@ public class ChromeWebDriver {
 
     public static Actions getAction() { return action; }
 
-    public WebDriverWait getWait() {
+    public static WebDriverWait getWait() {
         return wait;
     }
 
