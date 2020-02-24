@@ -11,7 +11,6 @@ public class OtusPersonalAccountTests {
 
     ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
     Steps steps = new Steps();
-    ProfilePage profilePage = new ProfilePage();
 
     String userLogin = System.getProperty("userLogin");
     String userPassword = System.getProperty("userPassword");
@@ -36,6 +35,7 @@ public class OtusPersonalAccountTests {
 
     @Test
     public void updateAllPersonalInformation() {
+        ProfilePage profilePage = new ProfilePage();
 
         // Change data on the profile page
         steps.openMainPage();
