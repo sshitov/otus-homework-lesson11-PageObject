@@ -5,7 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProfilePage {
 
@@ -34,14 +33,8 @@ public class ProfilePage {
     @FindBy(css = "[data-ajax-slave*='by_country'] label div")
     protected WebElement country;
 
-    @FindBy(css = "[title='Россия']")
-    protected WebElement countryRussia;
-
     @FindBy(css = ".js-lk-cv-dependent-slave-city label div")
     protected WebElement city;
-
-    @FindBy(css = "[title='Москва']")
-    protected WebElement cityMoscow;
 
     @FindBy(css = "[value='remote']")
     protected WebElement RemoteWork;
@@ -114,15 +107,7 @@ public class ProfilePage {
         return country;
     }
 
-    public WebElement getCountryRussia() {
-        return countryRussia;
-    }
-
-    public WebElement getCity() {
-        return city;
-    }
-
-    public WebElement getCityMoscow() { return cityMoscow; }
+    public WebElement getCity() { return city; }
 
     public WebElement getRemoteWork() {
         return RemoteWork;
@@ -216,14 +201,17 @@ public class ProfilePage {
     }
 
     public ProfilePage selectCountryRussia() {
-        getCountry().click();
-        getCountryRussia().click();
+        String selectCountryRussia = "document.querySelector(\"[name='country']\").click(); " +
+                "+ document.querySelector(\"[title='Россия']\").click();";
+        ((JavascriptExecutor)ChromeWebDriver.getDriver()).executeScript(selectCountryRussia);
         return this;
     }
 
-    public ProfilePage selectCityMoscow() {
-        getCity().click();
-        getCityMoscow().click();
+    public ProfilePage selectCityMoscow() throws InterruptedException {
+        Thread.sleep(500);
+        String selectCityMoscow = "document.querySelector(\"[name='city']\").click(); " +
+                "+ document.querySelector(\"[title='Москва']\").click();";
+        ((JavascriptExecutor)ChromeWebDriver.getDriver()).executeScript(selectCityMoscow);
         return this;
     }
 
@@ -298,12 +286,14 @@ public class ProfilePage {
 
     public void saveChangesOnTheProfilePage() {
         getSaveChanges().click();
-        ChromeWebDriver.getWait().until(ExpectedConditions.invisibilityOf(getSaveChanges()));
-
     }
 
     public String getValueTextField(WebElement webElement){
         return webElement.getAttribute("value");
+    }
+
+    public String getInnerTextTextField(WebElement webElement){
+        return webElement.getAttribute("innerText");
     }
 
     public String getValueCheckField(WebElement webElement){
