@@ -12,11 +12,8 @@ public class OtusPersonalAccountTests {
     ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
     Steps steps = new Steps();
 
-/*    String userLogin = System.getProperty("userLogin");
-    String userPassword = System.getProperty("userPassword");*/
-
-    String userLogin = "Shitovsergeya@yandex.ru";
-    String userPassword = "ukupnik2134";
+    String userLogin = System.getProperty("userLogin");
+    String userPassword = System.getProperty("userPassword");
 
     @Rule
     public ErrorCollector errorCollector = new ErrorCollector();
