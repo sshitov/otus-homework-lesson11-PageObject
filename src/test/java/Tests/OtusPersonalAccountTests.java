@@ -12,8 +12,11 @@ public class OtusPersonalAccountTests {
     ChromeWebDriver chromeWebDriver = new ChromeWebDriver();
     Steps steps = new Steps();
 
-    String userLogin = System.getProperty("userLogin");
-    String userPassword = System.getProperty("userPassword");
+/*    String userLogin = System.getProperty("userLogin");
+    String userPassword = System.getProperty("userPassword");*/
+
+    String userLogin = "Shitovsergeya@yandex.ru";
+    String userPassword = "ukupnik2134";
 
     @Rule
     public ErrorCollector errorCollector = new ErrorCollector();
@@ -34,8 +37,7 @@ public class OtusPersonalAccountTests {
     }
 
     @Test
-    public void updateAllPersonalInformation() {
-        ProfilePage profilePage = new ProfilePage();
+    public void updateAllPersonalInformation() throws InterruptedException {
 
         // Change data on the profile page
         steps.openMainPage();
@@ -70,6 +72,8 @@ public class OtusPersonalAccountTests {
         ChromeWebDriver.getDriver().quit();
         chromeWebDriver.create();
 
+        ProfilePage profilePage = new ProfilePage();
+
         // Verifying that all change in the fields is saved
         steps.openMainPage();
         steps.openAuthorizationForm();
@@ -90,9 +94,9 @@ public class OtusPersonalAccountTests {
         errorCollector.checkThat("Дата рождения не соответствует ожидаемой",
                 profilePage.getValueTextField(profilePage.getDateOfBirth()), new StringContains("16.08.1991"));
         errorCollector.checkThat("Страна не соответствует ожидаемой",
-                profilePage.getValueTextField(profilePage.getCountry()), new StringContains("Россия"));
+                profilePage.getInnerTextTextField(profilePage.getCountry()), new StringContains("Россия"));
         errorCollector.checkThat("Город не соответствует ожидаемому",
-                profilePage.getValueTextField(profilePage.getCity()), new StringContains("Москва"));
+                profilePage.getInnerTextTextField(profilePage.getCity()), new StringContains("Москва"));
         errorCollector.checkThat("Значение \"Удаленная работа\" не проставлено",
                 profilePage.getValueCheckField(profilePage.getRemoteWork()), new StringContains("true"));
         errorCollector.checkThat("Первый вид связи не facebook",
